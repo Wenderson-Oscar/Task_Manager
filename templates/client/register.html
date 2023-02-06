@@ -1,0 +1,11 @@
+{% block content %}
+    <br>
+    <h2>Cadastro de Cliente</h2>
+    <form method="POST" class="table" enctype="multipart/form-data">
+        {% csrf_token %}
+            <div class="form-group">
+                {{ form.as_p }}
+             </div>
+            <button type="submit" class="save btn btn-default">Cadastrar</button>
+    </form>
+{% endblock %}
