@@ -1,0 +1,17 @@
+{% block content %}
+{% if user.is_authenticated %}
+    <h3>Titulo: {{task.titulo}}</h3>
+    <b>Descrição</b>: {{task.descricao}}<br>
+    <b>Data Criação</b>: {{task.data_criacao}}<br>
+    <b>Data de Conclusão</b>: {{task.data_conclusao}}<br>
+    <b>Status</b>: {{task.status}}<br>
+    <td>
+        <a class="btn btn-default" href="{% url 'edit_task' id=task.id %}">
+            <button type="button" class="btn btn-danger">Editar</button>
+        </a>
+        <a class="btn btn-default" href="{% url 'delete_task' id=task.id %}">
+            <button type="button" class="btn btn-danger">Excluir</button>
+        </a>
+    </td>
+{% endif %}
+{% endblock %}

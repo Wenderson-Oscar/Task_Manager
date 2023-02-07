@@ -1,0 +1,18 @@
+{% block content %}
+    <br>
+    {% if user.is_authenticated %}
+        {% for tasks in task %}
+            Titulo: {{tasks.titulo}}<br>
+            Status: {{tasks.status}}<br>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'detail_task' id=tasks.id %}">Detalhar Tarefa</a>
+                <a class="nav-link" href="{% url 'delete_task' id=tasks.id %}">Excluir Tarefa</a>
+            </li>
+        {% endfor %}
+    <br>
+    <li class="nav-item">
+        <a class="nav-link" href="{% url 'add_task' %}">Criar Tarefa
+        </a>
+    </li>
+    {% endif %}
+{% endblock %}

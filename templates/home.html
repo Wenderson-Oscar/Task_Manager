@@ -10,6 +10,16 @@
         <title>Homepage</title>
     </head>
     <body>
+    {% if user.is_authenticated or user.is_superuser %}
+    Aqui sera adicionado um leyaut
+    <li class="nav-item">
+        <a class="nav-link" href="{% url 'list_task' %}">Listar Tarefa</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{% url 'add_task' %}">Criar Tarefa</a>
+    </li>
+    
+    {% else %}
         <br>
         <center><h1>Faça Seu Login</h1></center>
         <center><div class="col-md-5 order-md-1">
@@ -29,6 +39,7 @@
         <a href="{% url 'register' %}">
             <button type="submit" class="btn btn-primary">Register</button>
         </a>
+    {% endif %}
     </body>
     </html>
 </main>
