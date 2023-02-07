@@ -12,7 +12,7 @@ def register_client(request):
         if form.is_valid():
             form.save()
             username = form.cleaned_data.get('username')
-            raw_password = form.cleaned_data.get('password')
+            raw_password = form.cleaned_data.get('password1')
             user = authenticate(username=username, password=raw_password)
             login(request, user)
             return redirect('home')
@@ -33,7 +33,6 @@ def authenticate_client(request):
         return render(request, 'client/home.html')
 
 def login_client(request):
-    login(request)
     return render(request, 'client/home.html')
 
 def logout_client(request):
