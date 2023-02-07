@@ -11,16 +11,14 @@
     </head>
     <body>
     {% if user.is_authenticated or user.is_superuser %}
+    Aqui sera adicionado um leyaut
+    <li class="nav-item">
+        <a class="nav-link" href="{% url 'list_task' %}">Listar Tarefa</a>
+    </li>
     <li class="nav-item">
         <a class="nav-link" href="{% url 'add_task' %}">Criar Tarefa</a>
     </li>
-        {% for tasks in task %}
-            Titulo: {{tasks.titulo}}<br>
-            Descrição: {{tasks.descricao}}<br>
-            Data de Criação: {{tasks.data_criacao}}<br>
-            Data de Conclusão: {{tasks.data_conclusao}}<br>
-            Status: {{tasks.status}}<br>
-        {% endfor %}
+    
     {% else %}
         <br>
         <center><h1>Faça Seu Login</h1></center>
