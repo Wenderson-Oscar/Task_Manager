@@ -1,36 +1,35 @@
+# Sistema de Gerenciamento de Tarefa
+>Prototipo para criar tarefas.
 
-## Desafio
+## Tecnologias Utilizadas
 
-Neste desafio, você precisará criar uma aplicação simples de gerenciamento de tarefas, usando o framework Django.
+<img src="https://img.shields.io/badge/Python-14354C?style=for-the-badge&logo=python&logoColor=white">
+<img src="https://img.shields.io/badge/Django-092E20?style=for-the-badge&logo=django&logoColor=white">
 
-## Requerimentos:
+## 🚀 Processo de Instalação
 
-    Autenticação de usuário: os usuários precisam se registrar e fazer login antes de acessar as tarefas.
-    CRUD de tarefas: os usuários podem criar, ler, atualizar e excluir tarefas.
-    Boas práticas de programação: o código deve ser claro, legível, e seguir as diretrizes da pep-8.
-    UI amigável: a interface deve ser fácil de usar e deve seguir boas práticas de design de UI.
+Para instalar **task_management**, siga estas etapas:
 
-## Instruções:
+Linux:
+```
+git clone 
+virtualenv env
+. env/bin/activate
+pip install -r requirementes.txt
+```
 
-    Crie um novo projeto Django com o nome "task_manager".
-    Adicione as seguintes informações a cada tarefa: título, descrição, data de criação, data de conclusão e status (pendente/concluído).
-    Implemente a autenticação de usuários, permitindo que os usuários se registrem e façam login.
-    Crie uma página para listar todas as tarefas, onde os usuários possam ver todas as tarefas que eles criaram.
-    Crie uma página para criar uma nova tarefa.
-    Crie uma página para editar uma tarefa existente.
-    Crie uma página para excluir uma tarefa existente.
-    Certifique-se de que o código siga as diretrizes da pep-8.
+Windows:
+```
+git clone 
+python -m venv env
+env\Scripts\activate
+pip install -r requirementes.txt
+```
 
-**Obs.: Não esqueça de fazer testes unitários para garantir a integridade da sua aplicação.**
+## ☕ Como Utlizar a Aplicação
 
-    Dicas:
+Para usar **task_management**, siga estas etapas:
 
-    Você pode usar o Django's User model para a autenticação de usuários.
-    Você pode usar o Django's Class-Based Views para implementar as vistas da aplicação.
-    Você pode usar o Django's Forms para criar os formulários da aplicação.
+```
 
-    Diferencial
-
-    Deploy da aplicação em algum servidor na web, sendo assim entregar o link da aplicação.
-
-Boa sorte!
+```

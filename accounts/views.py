@@ -7,6 +7,7 @@ def home(request):
     return render(request, 'home.html')
 
 def register_client(request):
+    """Registra os Clientes"""
     if request.method == "POST":
         form = ClienteForm(request.POST)
         if form.is_valid():
@@ -21,6 +22,7 @@ def register_client(request):
     return render(request, 'client/register.html', {'form': form})
 
 def authenticate_client(request):
+    """Autenticar o Cliete"""
     username = request.POST['username']
     password = request.POST['password']
     user = authenticate(username=username, password=password)

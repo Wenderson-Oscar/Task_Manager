@@ -4,10 +4,12 @@ from .forms import TaskForms
 
 # Create your views here.
 def list_task(request):
+    """Lista todas as Tarefas"""
     task = Tarefa.objects.all()
     return render(request, 'task/list_task.html', {'task': task})
 
 def add_task(request):
+    """Adiciona Tarefas"""
     if request.method == "POST":
         form = TaskForms(request.POST)
         if form.is_valid():
@@ -19,10 +21,12 @@ def add_task(request):
     return render(request, 'task/add_task.html', {'form': form})
 
 def detail_task(request, id):
+    """Detalhar as Tarefas"""
     task = get_object_or_404(Tarefa, pk=id)
     return render(request, 'task/detail_task.html', {'task': task})
 
 def edit_task(request, id):
+    """Edita as Tarefas"""
     task = get_object_or_404(Tarefa, pk=id)
     if request.method == "POST":
         form = TaskForms(request.POST, instance=task)
@@ -35,6 +39,7 @@ def edit_task(request, id):
     return render(request, 'task/edit_task.html', {'form': form})
 
 def delete_task(request, id):
+    """Delete as Tarefas"""
     task = get_object_or_404(Tarefa, pk=id)
     task.delete()
     return redirect('list_task')
