@@ -4,7 +4,7 @@ from .models import Cliente
 from .forms import ClienteForm
 
 def home(request):
-    return render(request, 'client/home.html')
+    return render(request, 'home.html')
 
 def register_client(request):
     if request.method == "POST":
@@ -28,13 +28,13 @@ def authenticate_client(request):
         login(request, user)
         id = user.id
         client = get_list_or_404(Cliente, pk=id)
-        return render(request, 'client/home.html', {'client': client})
+        return render(request, 'home.html', {'client': client})
     else:
-        return render(request, 'client/home.html')
+        return render(request, 'home.html')
 
 def login_client(request):
-    return render(request, 'client/home.html')
+    return render(request, 'home.html')
 
 def logout_client(request):
     logout(request)
-    return render(request, 'client/home.html')
+    return render(request, 'home.html')

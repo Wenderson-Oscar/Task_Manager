@@ -1,0 +1,15 @@
+{% block content %}
+    <br>
+    {% if user.is_authenticated %}
+        <h2>Criar Tarefa</h2>
+        <form method="POST" class="table" enctype="multipart/form-data">
+            {% csrf_token %}
+                <div class="form-group">
+                    {{ form.as_p }}
+                </div>
+                <a>
+                    <button type="submit" class="save btn btn-default">Criar</button>
+                </a>
+        </form>
+    {% endif %}
+{% endblock %}

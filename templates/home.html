@@ -10,6 +10,18 @@
         <title>Homepage</title>
     </head>
     <body>
+    {% if user.is_authenticated or user.is_superuser %}
+    <li class="nav-item">
+        <a class="nav-link" href="{% url 'add_task' %}">Criar Tarefa</a>
+    </li>
+        {% for tasks in task %}
+            Titulo: {{tasks.titulo}}<br>
+            Descrição: {{tasks.descricao}}<br>
+            Data de Criação: {{tasks.data_criacao}}<br>
+            Data de Conclusão: {{tasks.data_conclusao}}<br>
+            Status: {{tasks.status}}<br>
+        {% endfor %}
+    {% else %}
         <br>
         <center><h1>Faça Seu Login</h1></center>
         <center><div class="col-md-5 order-md-1">
@@ -29,6 +41,7 @@
         <a href="{% url 'register' %}">
             <button type="submit" class="btn btn-primary">Register</button>
         </a>
+    {% endif %}
     </body>
     </html>
 </main>
