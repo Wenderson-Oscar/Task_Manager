@@ -1,20 +1,23 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Tarefa
 from .forms import TaskForms
+from accounts.models import Cliente
 
 # Create your views here.
 def list_task(request):
     """Lista todas as Tarefas"""
-    task = Tarefa.objects.all()
+    task = Tarefa.objects.filter(user__user=request.user.id)
     return render(request, 'task/list_task.html', {'task': task})
 
 def add_task(request):
     """Adiciona Tarefas"""
+    cliente = Cliente.objects.get(user__id=request.user.id)
     if request.method == "POST":
         form = TaskForms(request.POST)
         if form.is_valid():
             task = form.save(commit=False)
-            form.save()
+            task.user = cliente
+            task.save()
             return redirect('detail_task', id=task.id)
     else:
         form = TaskForms()
