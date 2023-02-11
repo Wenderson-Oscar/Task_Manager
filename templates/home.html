@@ -28,7 +28,7 @@
         <br>
         <center><h1>Faça Seu Login</h1></center>
         <center><div class="col-md-5 order-md-1">
-            <form action="{% url 'authenticate_client'%}" method="post">
+            <form method="post" action="{% url 'authenticate_client'%}">
                 {% csrf_token %}
                     <div class="mb-3" >
                         <label for="exampleInputEmail1" class="form-label">Username</label>

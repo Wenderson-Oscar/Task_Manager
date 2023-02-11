@@ -2,35 +2,31 @@ from django.contrib.auth import login, logout, authenticate
 from django.shortcuts import render, redirect, get_list_or_404
 from .models import Cliente
 from .forms import ClienteForm
+from django.contrib.auth.forms import UserCreationForm
 
 def home(request):
     return render(request, 'home.html')
 
 def register_client(request):
-    """Registra os Clientes"""
     if request.method == "POST":
         form = ClienteForm(request.POST)
         if form.is_valid():
-            form.save()
-            username = form.cleaned_data.get('username')
-            raw_password = form.cleaned_data.get('password1')
-            user = authenticate(username=username, password=raw_password)
+            user = form.save()
             login(request, user)
             return redirect('home')
     else:
         form = ClienteForm()
     return render(request, 'client/register.html', {'form': form})
+        
 
 def authenticate_client(request):
-    """Autenticar o Cliete"""
+    """Autenticar o Cliente"""
     username = request.POST['username']
     password = request.POST['password']
     user = authenticate(username=username, password=password)
     if user is not None:
         login(request, user)
-        id = user.id
-        client = get_list_or_404(Cliente, pk=id)
-        return render(request, 'home.html', {'client': client})
+        return redirect('home')
     else:
         return render(request, 'home.html')
 
