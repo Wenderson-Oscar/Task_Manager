@@ -8,9 +8,10 @@
                 <div class="form-group">
                     {{ form.as_p }}
                 </div>
-                <a>
-                    <button type="submit" class="save btn btn-default">Criar</button>
-                </a>
+                <div class="d-flex justify-content-end">
+                    <a class="btn btn-outline-danger" href="javascript:history.back()">Cancelar</a>
+                    <button type="submit" class="save btn btn-success">Salvar</button>
+                </div>
         </form>
     {% endif %}
 {% endblock %}
