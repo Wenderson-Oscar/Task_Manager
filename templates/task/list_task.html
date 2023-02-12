@@ -7,6 +7,7 @@
             <li class="nav-item">
                 <a class="nav-link" href="{% url 'detail_task' id=tasks.id %}">Detalhar Tarefa</a>
                 <a class="nav-link" href="{% url 'delete_task' id=tasks.id %}">Excluir Tarefa</a>
+                <a class="nav-link" href="{% url 'task_completed' tasks.id %}">Concluir Tarefa</a>
             </li>
         {% endfor %}
     <br>
