@@ -1,5 +1,7 @@
+{% extends 'base.html' %}   
 {% block content %}
 {% if user.is_authenticated %}
+    <br>
     <h3>Titulo: {{task.titulo}}</h3>
     <b>Descrição</b>: {{task.descricao}}<br>
     <b>Data Criação</b>: {{task.data_criacao}}<br>
@@ -13,8 +15,5 @@
             <button type="button" class="btn btn-danger">Excluir</button>
         </a>
     </td>
-    <li class="nav-item">
-        <a class="nav-link" href="{% url 'home' %}">Home</a>
-    </li>
 {% endif %}
 {% endblock %}

@@ -1,3 +1,4 @@
+{% extends 'base.html' %}   
 {% block content %}
 <main>
     <!DOCTYPE html>
@@ -6,24 +7,11 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Homepage</title>
+        <title>Tarefas</title>
     </head>
     <body>
     {% if user.is_authenticated or user.is_superuser %}
-    Aqui sera adicionado um leyaut
-    <li class="nav-item">
-        <a class="nav-link" href="{% url 'list_task' %}">Listar Tarefa</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" href="{% url 'add_task' %}">Criar Tarefa</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" href="{% url 'logout_client' %}">Logout</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" href="{% url 'home' %}">Home</a>
-    </li>
-    
+
     {% else %}
         <br>
         <center><h1>Faça Seu Login</h1></center>

@@ -2,7 +2,6 @@ from django.shortcuts import render, redirect, get_object_or_404
 from .models import Tarefa
 from .forms import TaskForms
 from accounts.models import Cliente
-from django.utils import timezone
 
 # Create your views here.
 def list_task(request):
@@ -25,6 +24,7 @@ def add_task(request):
     return render(request, 'task/add_task.html', {'form': form})
 
 def task_completed(request, id):
+    """Conclue a Tarefa Selecionada"""
     task_compl = get_object_or_404(Tarefa, pk=id)
     task_compl.status = "Concluído"
     task_compl.save()

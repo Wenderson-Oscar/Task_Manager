@@ -1,3 +1,4 @@
+{% extends 'base.html' %}   
 {% block content %}
     <br>
     {% if user.is_authenticated %}
@@ -14,9 +15,6 @@
     <li class="nav-item">
         <a class="nav-link" href="{% url 'add_task' %}">Criar Tarefa
         </a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" href="{% url 'home' %}">Home</a>
     </li>
     {% endif %}
 {% endblock %}
