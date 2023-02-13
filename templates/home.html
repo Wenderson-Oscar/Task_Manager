@@ -8,6 +8,59 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Tarefas</title>
+        <style>
+            h1 {
+                color: #333;
+                font-size: 24px;
+                font-weight: bold;
+                text-align: center;
+                margin-top: 40px;
+                margin-bottom: 20px;
+            }
+        
+            form {
+                width: 400px;
+                margin: 0 auto;
+            }
+        
+            label {
+                display: block;
+                margin-bottom: 10px;
+                font-size: 16px;
+                font-weight: bold;
+            }
+        
+            input[type="text"], input[type="password"] {
+                width: 100%;
+                padding: 10px;
+                font-size: 16px;
+                border: 1px solid #ccc;
+                border-radius: 5px;
+                margin-bottom: 20px;
+            }
+        
+            button {
+                display: block;
+                width: 100%;
+                padding: 10px;
+                font-size: 16px;
+                font-weight: bold;
+                color: #fff;
+                background-color: #007bff;
+                border: none;
+                border-radius: 5px;
+                margin-top: 20px;
+            }
+        
+            button:hover {
+                background-color: #0069d9;
+            }
+            .link-center {
+                font-size: 16px;
+                width: 120px;
+                height: 30px;
+            }
+        </style>
     </head>
     <body>
     {% if user.is_authenticated or user.is_superuser %}
@@ -27,16 +80,14 @@
             </div>
             <div class="form-row">
                 <div class="col-md-10 offset-md-1">
-                  <div class="form-group mt-0 mb-1">
-                      <button type="submit" class="col-md-12 btn btn-success">Entrar
-                      </button>
-                  </div>
-               </div>
-             </div>
+                    <div class="form-group mt-0 mb-1">
+                        <button type="submit" class="col-md-12 btn btn-success">Entrar</button>
+                    </div>
+                    <br>
+                    <a href="{% url 'register' %}" class="link-center">Registrar</a>
+                </div>
+            </div>
         </form>
-        <a href="{% url 'register' %}">
-            <button type="submit" class="col-md-12 btn-danger">Registrar</button>
-        </a>
     {% endif %}
     </body>
     </html>
