@@ -14,23 +14,28 @@
 
     {% else %}
         <br>
-        <center><h1>Faça Seu Login</h1></center>
-        <center><div class="col-md-5 order-md-1">
-            <form method="post" action="{% url 'authenticate_client'%}">
-                {% csrf_token %}
-                    <div class="mb-3" >
-                        <label for="exampleInputEmail1" class="form-label">Username</label>
-                        <input name="username" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                    </div>
-                    <div class="mb-3">
-                        <label for="exampleInputPassword1" class="form-label">Password</label>
-                        <input name="password" type="password" class="form-control" id="exampleInputPassword1">
-                    </div>
-                <button type="submit" class="btn btn-primary">Login</button>
-            </form>
-        </div>
+        <h1 class="font-weight-light my-4 text-center">Login</h1>
+        <form class="form-horizontal" method="post" action="{% url 'authenticate_client'%}">
+            {% csrf_token %}
+            <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Usuário:</label>
+                <input name="username" type="text" class="form-control" required>
+            </div>
+            <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">Senha:</label>
+                <input name="password" type="password" class="form-control" required>
+            </div>
+            <div class="form-row">
+                <div class="col-md-10 offset-md-1">
+                  <div class="form-group mt-0 mb-1">
+                      <button type="submit" class="col-md-12 btn btn-success">Entrar
+                      </button>
+                  </div>
+               </div>
+             </div>
+        </form>
         <a href="{% url 'register' %}">
-            <button type="submit" class="btn btn-primary">Register</button>
+            <button type="submit" class="col-md-12 btn-danger">Registrar</button>
         </a>
     {% endif %}
     </body>

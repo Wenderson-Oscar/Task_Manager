@@ -21,7 +21,7 @@
         {% for tasks in task %}
         <div class="card border border-success">
             <div class="card-header d-flex justify-content-between">
-            Titulo: {{tasks.titulo}}<br>
+            Nome: {{tasks.titulo}}<br>
             Status: {{tasks.status}}<br>
             <li>
                 <a  href="{% url 'detail_task' id=tasks.id %}">
