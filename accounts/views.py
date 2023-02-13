@@ -26,7 +26,7 @@ def authenticate_client(request):
     user = authenticate(username=username, password=password)
     if user is not None:
         login(request, user)
-        return redirect('home')
+        return redirect('list_task')
     else:
         return render(request, 'home.html')
 

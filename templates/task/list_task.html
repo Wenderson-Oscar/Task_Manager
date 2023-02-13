@@ -1,21 +1,42 @@
+{% extends 'base.html' %}   
 {% block content %}
     <br>
+    {% if not task %}
+    <div class="alert alert-warning">
+        Ops, Percebemos que não esta logado no sistema, Entre ou Cadastrar-se
+    </div>
+    {% endif %}
     {% if user.is_authenticated %}
-        {% for tasks in task %}
-            Titulo: {{tasks.titulo}}<br>
-            Status: {{tasks.status}}<br>
-            <li class="nav-item">
-                <a class="nav-link" href="{% url 'detail_task' id=tasks.id %}">Detalhar Tarefa</a>
-                <a class="nav-link" href="{% url 'delete_task' id=tasks.id %}">Excluir Tarefa</a>
-            </li>
-        {% endfor %}
-    <br>
-    <li class="nav-item">
-        <a class="nav-link" href="{% url 'add_task' %}">Criar Tarefa
+    {% if not task %}
+    <div class="alert alert-warning">
+        Ops, você não tem nenhuma tarefa salva ainda.
+    </div>
+    {% else %}
+    <div class="container d-flex justify-content-between">
+        <h1>Lista de Tarefas</h1>
+        <a href="{% url 'add_task' %}">
+            <button tyé="button" class="save btn btn-success">Criar Tarefa</button>
         </a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" href="{% url 'home' %}">Home</a>
-    </li>
+      </div>
+        {% for tasks in task %}
+        <div class="card border border-success">
+            <div class="card-header d-flex justify-content-between">
+            Nome: {{tasks.titulo}}<br>
+            Status: {{tasks.status}}<br>
+            <li>
+                <a  href="{% url 'detail_task' id=tasks.id %}">
+                <button tyé="button" class="btn btn-outline-primary">Detalhar Tarefa</button>
+                </a>
+                <a  href="{% url 'delete_task' id=tasks.id %}">
+                    <button tyé="button" class="btn btn-outline-primary">Apagar Tarefa</button> 
+                </a>
+                <a href="{% url 'task_completed' tasks.id %}">
+                    <button type="button" class="btn btn-outline-primary">Concluir Tarefa</button>
+                </a>
+            </li>
+            </div>
+        </div>
+        {% endfor %}
+    {% endif %}
     {% endif %}
 {% endblock %}

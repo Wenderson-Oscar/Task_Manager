@@ -23,6 +23,13 @@ def add_task(request):
         form = TaskForms()
     return render(request, 'task/add_task.html', {'form': form})
 
+def task_completed(request, id):
+    """Conclue a Tarefa Selecionada"""
+    task_compl = get_object_or_404(Tarefa, pk=id)
+    task_compl.status = "Concluído"
+    task_compl.save()
+    return redirect('list_task')
+
 def detail_task(request, id):
     """Detalhar as Tarefas"""
     task = get_object_or_404(Tarefa, pk=id)
