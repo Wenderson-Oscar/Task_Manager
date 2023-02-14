@@ -9,7 +9,7 @@ class TaskForms(forms.ModelForm):
 
         widgets = {
             'titulo': forms.TextInput(attrs={ 'class': 'form-control'}),
-            'descricao': forms.TextInput(attrs={'class': 'form-control'}),
+            'descricao': forms.Textarea(attrs={'class': 'form-control'}),
             'data_conclusao': forms.SelectDateWidget(attrs={'type': 'date', 'format': 'dd/mm/yyyy'}),
             'status': forms.Select(attrs={ 'class': 'form-control'}),
         }
