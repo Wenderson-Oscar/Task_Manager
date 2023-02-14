@@ -1,7 +1,7 @@
 {% extends 'base.html' %}   
 {% block content %}
     <br>
-    {% if not task %}
+    {% if not task and not user.is_authenticated %}
     <div class="alert alert-warning">
         Ops, Percebemos que não esta logado no sistema, Entre ou Cadastrar-se
     </div>
