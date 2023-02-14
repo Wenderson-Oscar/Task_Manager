@@ -16,15 +16,19 @@ import os
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+read_env = os.path.join(BASE_DIR, '.env')
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-w^*&)5kfvrzk!+k$ovlae5^e8l#zli^6fm^vgj#_ian=r&1kbu'
+
+SECRET_KEY = os.environ['SECRET_KEY'] = read_env
+
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+
+DEBUG = os.environ['DEBUG'] = read_env
 
 ALLOWED_HOSTS = ['*']
 
@@ -55,9 +59,9 @@ MIDDLEWARE = [
 ROOT_URLCONF = 'core.urls'
 
 TEMPLATES = [
-    {
+    {  
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates/')],
+        'DIRS': [os.path.join(BASE_DIR, 'templates/')], # Encontra a url em que a pasta templates estar
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -120,6 +124,7 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
+# condição para encontrar a pasta static que se encontra fora da app
 if DEBUG:
     STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 else:
