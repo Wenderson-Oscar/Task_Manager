@@ -32,7 +32,7 @@
             {% endif %}
         {% else %}
             {% if task.status %}
-                De {{task.data_criacao|date:"d/m/Y" }} às {{task.data_criacao|date:"H:i" }} até {{task.data_conclusao|date:"d/m/Y" }} às {{task.data_conclusao|date:"H:i" }}.
+                De {{task.data_criacao|date:"d/m/Y" }} às {{task.data_criacao|date:"H:i" }} até {{task.data_conclusao|date:"d/m/Y" }}
             {% else %}
                 De {{task.data_conclusao|date:"d/m/Y H:i" }} até agora.
             {% endif %}
