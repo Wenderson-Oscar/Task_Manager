@@ -29,7 +29,7 @@
 
 ## 🚀 Processo de Instalação
 
-Para instalar **task_management**, siga estas etapas:
+Para instalar **Task_Manager**, siga estas etapas:
 
 `Linux:`
 
@@ -141,7 +141,7 @@ Agora a sua `SECRET_KEY` está armazenada com segurança em um arquivo `.env` qu
 
 # ☕ Como Utlizar a Aplicação
 
-## Para usar **task_management**, siga estas etapas:
+## Para usar **Task_Manager**, siga estas etapas:
 
 Crie o Banco de Dados:
 ```
