@@ -1,39 +1,44 @@
 {% extends 'base.html' %}   
 {% block content %}
     <br>
-    {% if not task %}
+    {% if not task and not user.is_authenticated %}
     <div class="alert alert-warning">
         Ops, Percebemos que não esta logado no sistema, Entre ou Cadastrar-se
     </div>
     {% endif %}
     {% if user.is_authenticated %}
+    <h1>Lista de Tarefas</h1>
+    <a href="{% url 'add_task' %}" class="text-primary" title="Criar Tarefa">
+        <img src="/static/icon/add_task.svg" width="35" height="35" alt="add">
+    </a>
     {% if not task %}
     <div class="alert alert-warning">
         Ops, você não tem nenhuma tarefa salva ainda.
     </div>
     {% else %}
     <div class="container d-flex justify-content-between">
-        <h1>Lista de Tarefas</h1>
-        <a href="{% url 'add_task' %}">
-            <button tyé="button" class="save btn btn-success">Criar Tarefa</button>
-        </a>
       </div>
         {% for tasks in task %}
+        <br>
         <div class="card border border-success">
             <div class="card-header d-flex justify-content-between">
             Nome: {{tasks.titulo}}<br>
             Status: {{tasks.status}}<br>
-            <li>
-                <a  href="{% url 'detail_task' id=tasks.id %}">
-                <button tyé="button" class="btn btn-outline-primary">Detalhar Tarefa</button>
-                </a>
-                <a  href="{% url 'delete_task' id=tasks.id %}">
-                    <button tyé="button" class="btn btn-outline-primary">Apagar Tarefa</button> 
-                </a>
-                <a href="{% url 'task_completed' tasks.id %}">
-                    <button type="button" class="btn btn-outline-primary">Concluir Tarefa</button>
-                </a>
-            </li>
+                <div>
+                    <a href="{% url 'detail_task' id=tasks.id %}" class="text-primary" title="Detalhar Tarefa">
+                        <img src="/static/icon/open_task.png" width="26" height="25" alt="edit">
+                    </a>
+                </div>
+                <div>
+                    <a href="{% url 'delete_task' id=tasks.id %}" class="text-primary" title="Deletar Tarefa">
+                        <img src="/static/icon/del_task.png" width="26" height="25" alt="del">
+                    </a>
+                </div>
+                <div class="col-2 col-md-1 order-1 order-md-1">
+                    <a href="{% url 'task_completed' tasks.id %}" class="text-primary" title="Concluir Tarefa">
+                        <img src="/static/icon/completed_task.png" width="30" height="29" alt="add">
+                    </a>
+                </div>
             </div>
         </div>
         {% endfor %}

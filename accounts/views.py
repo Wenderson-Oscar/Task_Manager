@@ -18,7 +18,6 @@ def register_client(request):
         form = ClienteForm()
     return render(request, 'client/register.html', {'form': form})
         
-
 def authenticate_client(request):
     """Autenticar o Cliente"""
     username = request.POST['username']
