@@ -1,5 +1,10 @@
 # Sistema de Gerenciamento de Tarefa
->Prototipo para criar tarefas.
+
+# 🔨 Em Construção ⚠️
+
+<img src="static/img/task_home.png">
+
+>Protótipo para criar e gerenciar tarefas.
 
 ## Tecnologias Utilizadas
 
@@ -12,18 +17,18 @@ Para instalar **task_management**, siga estas etapas:
 
 Linux:
 ```
-git clone 
+git clone https://github.com/Wenderson-Oscar/Task_Manager.git
 virtualenv env
 . env/bin/activate
-pip install -r requirementes.txt
+pip install -r requirements.txt
 ```
 
 Windows:
 ```
-git clone 
+git clone https://github.com/Wenderson-Oscar/Task_Manager.git
 python -m venv env
 env\Scripts\activate
-pip install -r requirementes.txt
+pip install -r requirements.txt
 ```
 
 ## ☕ Como Utlizar a Aplicação
@@ -31,5 +36,8 @@ pip install -r requirementes.txt
 Para usar **task_management**, siga estas etapas:
 
 ```
-
+python manage.py migrate 
+python manage.py createsuperuser
+python manage.py runserver
 ```
+Aproveite.
