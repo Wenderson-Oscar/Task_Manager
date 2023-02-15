@@ -41,7 +41,7 @@ Crie o Ambiente Virtual:
 ```
 virtualenv env
 ```
-Ative o Ambente Virtual:
+Ative o Ambiente Virtual:
 ```
 . env/bin/activate
 ```
@@ -63,7 +63,7 @@ Crie o Ambiente Virtual:
 ```
 python -m venv env
 ```
-Ative o Ambente Virtual:
+Ative o Ambiente Virtual:
 ```
 env\Scripts\activate
 ```
