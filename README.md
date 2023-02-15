@@ -6,7 +6,7 @@
 
 >Protótipo para criar e gerenciar tarefas.
 
-## Requisitos
+## Requisitos de Projeto
 
 * ✅ Autenticação de usuário: os usuários precisam se registrar e fazer login antes de acessar as tarefas.
 
