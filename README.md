@@ -6,30 +6,73 @@
 
 >Protótipo para criar e gerenciar tarefas.
 
+## Requisitos
+
+* ✅ Autenticação de usuário: os usuários precisam se registrar e fazer login antes de acessar as tarefas.
+
+* ✅ CRUD de tarefas: os usuários podem criar, ler, atualizar e excluir tarefas.
+
+* ✅ Boas práticas de programação: o código deve ser claro, legível, e seguir as diretrizes da pep-8.
+
+* ✅ UI amigável: a interface deve ser fácil de usar e deve seguir boas práticas de design de UI.
+
+* ⏳ Testes Unitários para garantir a integridade da aplicação.
+
+<hr>
+
 ## Tecnologias Utilizadas
 
 <img src="https://img.shields.io/badge/Python-14354C?style=for-the-badge&logo=python&logoColor=white">
 <img src="https://img.shields.io/badge/Django-092E20?style=for-the-badge&logo=django&logoColor=white">
 
+<hr>
+
 ## 🚀 Processo de Instalação
 
 Para instalar **task_management**, siga estas etapas:
 
-Linux:
+`Linux:`
+
+Clone o Repósitorio :
 ```
 git clone https://github.com/Wenderson-Oscar/Task_Manager.git
+```
+Crie o Ambiente Virtual:
+```
 virtualenv env
+```
+Ative o Ambente Virtual:
+```
 . env/bin/activate
+```
+Baixando as Dependencias:
+
+```
 pip install -r requirements.txt
 ```
 
-Windows:
+<hr>
+
+`Windows:`
+
+Clone o Repósitorio :
 ```
 git clone https://github.com/Wenderson-Oscar/Task_Manager.git
+```
+Crie o Ambiente Virtual:
+```
 python -m venv env
+```
+Ative o Ambente Virtual:
+```
 env\Scripts\activate
+```
+Baixando as Dependencias:
+
+```
 pip install -r requirements.txt
 ```
+
 
 ## Se for a Primeira vez Clonando um Repositório Teremos que criar a SECRET_KEY
 
@@ -100,9 +143,16 @@ Agora a sua `SECRET_KEY` está armazenada com segurança em um arquivo `.env` qu
 
 ## Para usar **task_management**, siga estas etapas:
 
+Crie o Banco de Dados:
 ```
 python manage.py migrate 
+```
+Crie o Super Usuário:
+```
 python manage.py createsuperuser
+```
+Inície o Servidor: 
+```
 python manage.py runserver
 ```
-Aproveite.
+`Aproveite.`

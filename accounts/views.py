@@ -8,6 +8,7 @@ def home(request):
     return render(request, 'home.html')
 
 def register_client(request):
+    """Registra so Cliente no Sistema"""
     if request.method == "POST":
         form = ClienteForm(request.POST)
         if form.is_valid():
