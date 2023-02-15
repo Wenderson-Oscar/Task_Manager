@@ -4,6 +4,3 @@
 __pycache__
 env
 db.sqlite3
-accounts/__pycache__
-core/__pycache__
-task_management/__pycache__
