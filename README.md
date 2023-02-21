@@ -98,6 +98,14 @@ Substitua `/caminho/para/o/projeto` pelo caminho para o diretório do projeto no
 
 depois de ter entrado no ambiente virtual (caso não saiba no início desse README tem o comando).
 
+Crie .env na raiz do projeto
+
+```
+touch .env
+```
+
+ou se preferir use a interfacegrafica para criar o arquivo.
+
 O arquivo `.env` é usado para armazenar variáveis de ambiente, como a `SECRET_KEY`.
 
 ## Passo 3: Gerar a SECRET_KEY
@@ -110,7 +118,7 @@ Copie a chave gerada.
 
 ## Passo 4: Adicione a SECRET_KEY ao arquivo `.env`
 
-Abra o arquivo `.env` em pyvenv.cfg e adicione a `SECRET_KEY` usando o seguinte formato:
+Adicione a `SECRET_KEY` usando o seguinte formato:
 
 também colocaremos o DEBUG 
 
