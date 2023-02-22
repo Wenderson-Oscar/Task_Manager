@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <br>
+  <h1>Tem certeza que deseja excluir essa tarefa?</h1>
+  <form method="post" enctype="multipart/form-data" action="{% url 'delete_task' id=task.id %}">
+    <p>você realmente deseja apagar a tarefa <b>{{ task }}</b> de sua lista?</p>
+    <p class="text-danger">OBS: Se apagar essa tarefa de sua lista ela será eliminado Permanentemente, sendo assim impossível de recuperá-la.</p>
+    {% csrf_token %}
+    {% if task.status == 'Pendente' %}
+    <br>
+    <p class="text-danger"><b>Esta tarefa ainda esta Pendente, você realmente deseja apaga antes de finaliza-la?</b></p>
+    <br>
+    {% endif %}
+    <button type="submit" class="btn btn-danger">Confirmar</button>
+    <a href="{% url 'list_task' %}" class="btn btn-default">Cancelar</a>
+  </form>
+{% endblock %}

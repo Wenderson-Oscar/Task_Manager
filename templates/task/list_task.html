@@ -30,12 +30,12 @@
                     </a>
                 </div>
                 <div>
-                    <a href="{% url 'delete_task' id=tasks.id %}" class="text-primary" title="Deletar Tarefa">
+                    <a href="{% url 'confirm_delete_task' id=tasks.id %}" class="text-primary" title="Deletar Tarefa">
                         <img src="/static/icon/del_task.png" width="26" height="25" alt="del">
                     </a>
                 </div>
                 <div class="col-2 col-md-1 order-1 order-md-1">
-                    <a href="{% url 'task_completed' tasks.id %}" class="text-primary" title="Concluir Tarefa">
+                    <a href="{% url 'confirm_completed_task' id=tasks.id %}" class="text-primary" title="Concluir Tarefa">
                         <img src="/static/icon/completed_task.png" width="30" height="29" alt="add">
                     </a>
                 </div>

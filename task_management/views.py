@@ -18,7 +18,7 @@ def add_task(request):
             task = form.save(commit=False)
             task.user = cliente
             task.save()
-            return redirect('detail_task', id=task.id)
+            return redirect('list_task')
     else:
         form = TaskForms()
     return render(request, 'task/add_task.html', {'form': form})
@@ -29,6 +29,11 @@ def task_completed(request, id):
     task_compl.status = "Concluído"
     task_compl.save()
     return redirect('list_task')
+
+def confirm_completed_task(request, id):
+    """Processo para poder concluir a Tarefa"""
+    task_compl = get_object_or_404(Tarefa, pk=id)
+    return render(request, 'task/completed_task.html', {'task':task_compl})
 
 def detail_task(request, id):
     """Detalhar as Tarefas"""
@@ -48,16 +53,18 @@ def edit_task(request, id):
         form = TaskForms(instance=task)
     return render(request, 'task/edit_task.html', {'form': form})
 
+def confirm_delete_task(request, id):
+    """Processo para poder excluir uma Tarefa"""
+    task = get_object_or_404(Tarefa, pk=id)
+    return render(request, 'task/del_task.html',{'task': task})
+
 def delete_task(request, id):
-    """Delete as Tarefas"""
+    """Deletando uma Tarefa"""
     task = get_object_or_404(Tarefa, pk=id)
     task.delete()
     return redirect('list_task')
 
-# // TRATANDO PÁGINA DE ERRO / confirmação_submit //
+# // TRATANDO PÁGINA DE ERRO //
 
 def handler404(request, exception):
     return render(request, 'page_error/error_404.html')
-
-def process_task(request):
-    pass

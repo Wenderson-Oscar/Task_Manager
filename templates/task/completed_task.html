@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <br>
+  <h1>Tem certeza que deseja Concluir essa tarefa?</h1>
+  <form method="post" enctype="multipart/form-data" action="{% url 'task_completed' id=task.id %}">
+    <p>você realmente deseja Concluir a tarefa <b>{{ task }}</b> ?</p>
+    {% csrf_token %}
+    <button type="submit" class="btn btn-danger">Confirmar</button>
+    <a href="{% url 'list_task' %}" class="btn btn-default">Cancelar</a>
+  </form>
+{% endblock %}
