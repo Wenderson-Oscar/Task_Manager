@@ -53,3 +53,11 @@ def delete_task(request, id):
     task = get_object_or_404(Tarefa, pk=id)
     task.delete()
     return redirect('list_task')
+
+# // TRATANDO PÁGINA DE ERRO / confirmação_submit //
+
+def handler404(request, exception):
+    return render(request, 'page_error/error_404.html')
+
+def process_task(request):
+    pass
