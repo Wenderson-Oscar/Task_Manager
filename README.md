@@ -14,7 +14,7 @@
 
 * ✅ Boas práticas de programação: o código deve ser claro, legível, e seguir as diretrizes da pep-8.
 
-* ⏳ UI amigável: a interface deve ser fácil de usar e deve seguir boas práticas de design de UI.
+* ✅ UI amigável: a interface deve ser fácil de usar e deve seguir boas práticas de design de UI.
 
 * ⏳ Testes Unitários para garantir a integridade da aplicação.
 
