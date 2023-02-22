@@ -5,6 +5,7 @@ from django.contrib.auth.models import User
 class ClienteTestCase(TestCase):
 
     def setUp(self) -> None:
+        
         self.user = User.objects.create_user(
             username='Teste@',
             email='teste@gmail.com',
@@ -18,6 +19,7 @@ class ClienteTestCase(TestCase):
         )
         
     def test_cliente_str(self):
+
         self.assertEqual(str(self.cliente.user), self.user.username)
         self.assertEqual(str(self.cliente), self.user.email)
         self.assertEqual(str(self.cliente.user.password), self.user.password)
