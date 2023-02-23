@@ -3,8 +3,10 @@ from task_management.models import Tarefa
 from accounts.models import Cliente
 from django.contrib.auth.models import User
 from django.utils import timezone
+from task_management.forms import TaskForms
 
-class TasksTestCase(TestCase):
+
+class TaskModelTestCase(TestCase):
 
     def setUp(self) -> None:
 
@@ -59,3 +61,54 @@ class TasksTestCase(TestCase):
         response = self.client.post(f'/task/task/{task_id}/delete/')
         self.assertEqual(response.status_code, 200)
         self.assertTrue(Tarefa.objects.filter(id=task_id).exists())
+
+
+class TaskFormTestCase(TestCase):
+
+    def setUp(self) -> None:
+
+        self.user = User.objects.create_user(
+            username='Teste@',
+            email='teste@gmail.com',
+            password='1@Weqasd9'
+            )
+
+        self.cliente = Cliente.objects.create(
+            user = self.user,
+            sexo = 'M',
+            nascimento = '2000-01-01'
+        )
+
+    def test_valid_form(self):
+
+        form_data = {
+            'titulo': 'Teste',
+            'descricao': 'teste descrição',
+            'data_conclusao': '2023-06-20',
+            'status': 'Pendente',
+            'user': self.cliente
+        }
+
+        form = TaskForms(data=form_data)
+        self.assertTrue(form.is_valid())
+        
+    def test_save_method(self):
+    
+        form_data = {
+            'titulo': 'Teste',
+            'descricao': 'teste descrição',
+            'data_conclusao': '2023-06-20',
+            'status': 'Pendente',
+            'user': self.cliente
+        }
+
+        form = TaskForms(data=form_data)
+        self.assertTrue(form.is_valid(), form.errors)
+        task = form.save(commit=False)
+        task.user = self.cliente
+        task = form.save()
+        self.assertEqual(task.titulo, form_data['titulo'])
+        self.assertEqual(task.descricao, form_data['descricao'])
+        self.assertEqual(task.data_conclusao.strftime('%Y-%m-%d'), form_data['data_conclusao'])
+        self.assertEqual(task.status, form_data['status'])
+        self.assertEqual(task.user, self.cliente)
