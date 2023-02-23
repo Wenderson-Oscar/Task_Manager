@@ -1,8 +1,10 @@
 from django.test import TestCase
 from accounts.models import Cliente
 from django.contrib.auth.models import User
+from .forms import ClienteForm
 
-class ClienteTestCase(TestCase):
+
+class ClientModelTestCase(TestCase):
 
     def setUp(self) -> None:
         
@@ -28,3 +30,41 @@ class ClienteTestCase(TestCase):
         self.assertTrue(self.user.is_active)
         self.assertFalse(self.user.is_staff)
         self.assertFalse(self.user.is_superuser)
+
+
+class ClienteFormTestCase(TestCase):
+    
+    def test_valid_form(self):
+
+        form_data = {
+            'username': 'testuser',
+            'email': 'testuser@test.com',
+            'password1': '32#aWasdfr@',
+            'password2': '32#aWasdfr@',
+            'sexo': 'M',
+            'nascimento': '2000-01-01'
+        }
+
+        form = ClienteForm(data=form_data)
+        self.assertTrue(form.is_valid(), form.errors)
+        
+    def test_save_method(self):
+
+        form_data = {
+            'username': 'testuser',
+            'email': 'testuser@test.com',
+            'password1': '32#aWasdfr@',
+            'password2': '32#aWasdfr@',
+            'sexo': 'M',
+            'nascimento': '2000-01-01'
+        }
+
+        form = ClienteForm(data=form_data)        
+        self.assertTrue(form.is_valid(), form.errors)
+        user = form.save()
+        self.assertIsInstance(user, User)
+        self.assertEqual(user.username, form_data['username'])
+        self.assertEqual(user.email, form_data['email'])
+        cliente = Cliente.objects.get(user=user)
+        self.assertEqual(cliente.sexo, form_data['sexo'])
+        self.assertEqual(cliente.nascimento.strftime('%Y-%m-%d'), form_data['nascimento'])
