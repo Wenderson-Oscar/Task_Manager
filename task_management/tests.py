@@ -31,7 +31,7 @@ class TaskModelTestCase(TestCase):
             user = self.cliente
         )
 
-    def test_create_task(self):
+    def test_create_task_successfully(self):
 
         self.client.login(username=self.user.email, password=self.user.password)
         self.assertEqual(self.task.titulo, 'Teste')
@@ -41,7 +41,7 @@ class TaskModelTestCase(TestCase):
         self.assertEqual(self.task.status, 'Pendente')
         self.assertEqual(self.task.user, self.cliente)
 
-    def test_edit_task(self):
+    def test_edit_task_changes_properties(self):
 
         self.client.login(username=self.user.email, password=self.user.password)
         self.task.titulo = 'Teste editado'
@@ -54,7 +54,7 @@ class TaskModelTestCase(TestCase):
         self.assertEqual(self.task.data_conclusao, '2023-06-21')
         self.assertEqual(self.task.status, 'Concluída')
 
-    def test_delete_task(self):
+    def test_delete_task_removes_task_from_database(self):
 
         self.client.login(username=self.user.email, password=self.user.password)
         task_id = self.task.id
