@@ -16,7 +16,7 @@
 
 * ✅ UI amigável: a interface deve ser fácil de usar e deve seguir boas práticas de design de UI.
 
-* ⏳ Testes Unitários para garantir a integridade da aplicação.
+* ✅ Testes Unitários para garantir a integridade da aplicação.
 
 <hr>
 
