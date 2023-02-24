@@ -1,7 +1,5 @@
 # Sistema de Gerenciamento de Tarefas
 
-# 🔨 Em Construção ⚠️
-
 <img src="static/img/task_home.png">
 
 >Protótipo para criar e gerenciar tarefas.
@@ -20,10 +18,15 @@
 
 <hr>
 
+### * [Demonstração Em Vídeo](https://drive.google.com/file/d/1L78pNpnYpjZfJv7tY5yM8DY3UsymGFny/view?usp=share_link)
+
+<hr>
+
 ## Tecnologias Utilizadas
 
-<img src="https://img.shields.io/badge/Python-14354C?style=for-the-badge&logo=python&logoColor=white">
-<img src="https://img.shields.io/badge/Django-092E20?style=for-the-badge&logo=django&logoColor=white">
+<img src="https://img.shields.io/badge/Python-14354C?style=for-the-badge&logo=python&logoColor=white"> 3.8.10
+<br>
+<img src="https://img.shields.io/badge/Django-092E20?style=for-the-badge&logo=django&logoColor=white"> 4.1.6
 
 <hr>
 
@@ -98,7 +101,7 @@ Substitua `/caminho/para/o/projeto` pelo caminho para o diretório do projeto no
 
 depois de ter entrado no ambiente virtual (caso não saiba no início desse README tem o comando).
 
-Crie .env na raiz do projeto
+Crie `.env` na raiz do projeto
 
 ```
 touch .env
