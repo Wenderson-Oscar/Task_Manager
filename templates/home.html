@@ -1,0 +1,119 @@
+{% extends 'base.html' %}   
+{% block content %}
+<main>
+    <!DOCTYPE html>
+    <html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Nano Tarefas</title>
+        <style>
+            h1 {
+                color: #333;
+                font-size: 24px;
+                font-weight: bold;
+                text-align: center;
+                margin-top: 40px;
+                margin-bottom: 20px;
+            }
+        
+            form {
+                width: 400px;
+                margin: 0 auto;
+            }
+        
+            label {
+                display: block;
+                margin-bottom: 10px;
+                font-size: 16px;
+                font-weight: bold;
+            }
+        
+            input[type="text"], input[type="password"] {
+                width: 100%;
+                padding: 10px;
+                font-size: 16px;
+                border: 1px solid #ccc;
+                border-radius: 5px;
+                margin-bottom: 20px;
+            }
+        
+            button {
+                display: block;
+                width: 100%;
+                padding: 10px;
+                font-size: 16px;
+                font-weight: bold;
+                color: #fff;
+                background-color: #007bff;
+                border: none;
+                border-radius: 5px;
+                margin-top: 20px;
+            }
+        
+            button:hover {
+                background-color: #0069d9;
+            }
+            .link-center {
+                font-size: 16px;
+                width: 120px;
+                height: 30px;
+            }
+            .txt {
+                margin: 150px 0;
+            }
+        </style>
+    </head>
+    <body>
+    {% if user.is_authenticated or user.is_superuser %}
+    <br>
+    <section>
+        <h1 class="hero_title">
+            Nano Tarefas 
+            <br>
+            <span>Um Gerenciador de Tarefas</span>
+        </h1>
+        <div class="hero_img-wrapper">
+            <img class="hero_img-back" width="500" style="float: right;" loading="lazy" title="Nano Tarefas" src="/static//img/task_home.png" alt="Nano Tarefas">
+        </div>
+        <div class="txt">
+        O site oferece um gerenciador de tarefas simples e intuitivo para ajudá-lo a priorizar e categorizar<br>
+        suas tarefas com prazos definidos. Com uma interface responsiva, você pode visualizar facilmente suas<br>
+        tarefas pendentes em qualquer dispositivo, economizando tempo e energia.
+        </div>
+    </section>
+    <section class="block-why">
+    </section>
+    <a href="{% url 'confirm_delete_client' %}">
+        Deletar Conta
+    </a>
+</div>
+    {% else %}
+        <br>
+        <h1 class="font-weight-light my-4 text-center">Login</h1>
+        <form class="form-horizontal" method="post" action="{% url 'authenticate_client'%}">
+            {% csrf_token %}
+            <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Usuário:</label>
+                <input name="username" type="text" class="form-control" required>
+            </div>
+            <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">Senha:</label>
+                <input name="password" type="password" class="form-control" required>
+            </div>
+            <div class="form-row">
+                <div class="col-md-10 offset-md-1">
+                    <div class="form-group mt-0 mb-1">
+                        <button type="submit" class="col-md-12 btn btn-success">Entrar</button>
+                    </div>
+                    <br>
+                    <a href="{% url 'register' %}" class="link-center">Registrar</a>
+                </div>
+            </div>
+        </form>
+    {% endif %}
+    </body>
+    </html>
+</main>
+{% endblock %}

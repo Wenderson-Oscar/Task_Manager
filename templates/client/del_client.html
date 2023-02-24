@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <br>
+  <h1>Tem certeza que deseja excluir a Conta ?</h1>
+  <form method="post" enctype="multipart/form-data" action="{% url 'delete_client' %}">
+    <p class="text-danger">OBS: Se apagar essa conta ela será eliminado Permanentemente, sendo assim impossível de recuperá-la.</p>
+    {% csrf_token %}
+    <button type="submit" class="btn btn-danger">Confirmar</button>
+    <a href="{% url 'home' %}" class="btn btn-default">Cancelar</a>
+  </form>
+{% endblock %}

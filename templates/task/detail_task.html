@@ -1,0 +1,65 @@
+{% extends 'base.html' %}   
+{% block content %}
+{% if user.is_authenticated %}
+    <br>
+    <div class="card border border-success">
+        <div class="card-header d-flex justify-content-between">
+        <div class="card-body">
+        <b>Título:</b> {{task.titulo}}<br><br>
+        <b>Descrição:</b> {{task.descricao}}<br><br>
+        <p class="card-text"><b>Status: </b>
+          {% if task.status == 'Concluído' and task.data_conclusao %}
+            <b class="text-success">Concluído</b>
+          {% elif task.status == 'Concluído' and not task.punctuality %}
+            <b class="text-success">Finalizada com atraso. &#128077</b>
+          {% else %}
+            <b class="text-danger">Pendente</b>
+          {% endif %}
+        </p>
+        <p><b>Criado Em:</b> <b class="text-success" >{{ task.data_criacao }}</b>
+        {% if not tasks.data_conclusao %}
+            {% if task.data_conclusao == None %} 
+            <p><b>Prazo:</b> <b class="text-danger">Não Existe</b>
+            {% endif %}
+        {% else %}
+            <p><b>Prazo:</b> {{ task.data_conclusao|date:"d/m/Y" }} até às {{ task.data_conclusao|date:"H:i" }}
+            </p>
+        {% endif %}
+        <p class="card-text"> <b>Periodo:</b> 
+        {% if not task.data_conclusao %}  
+            {% if task.data_conclusao == None %} 
+            <b class="text-danger">Não Existe</b>
+            {% endif %}
+        {% else %}
+            {% if task.status %}
+                De {{task.data_criacao|date:"d/m/Y" }} às {{task.data_criacao|date:"H:i" }} até {{task.data_conclusao|date:"d/m/Y" }}
+            {% else %}
+                De {{task.data_conclusao|date:"d/m/Y H:i" }} até agora.
+            {% endif %}
+        {% endif %}
+        </p>
+        </div>
+        </div>
+      
+        <div class="container pt-3">
+          <div class="row g-2">
+            <div class="col-2 col-md-1 order-2 order-md-1">
+                <a class="btn btn-default" href="{% url 'edit_task' id=task.id %}">
+                    <button type="button" class="btn btn-outline-danger">Editar</button>
+                </a>
+            </div>
+            <div class="col-2 col-md-1 order-1 order-md-1">
+                <a class="btn btn-default" href="{% url 'confirm_delete_task' id=task.id %}">
+                    <button type="button" class="btn btn-outline-danger">Excluir</button>
+                </a>
+            </div>
+            <div class="col-2 col-md-1 order-1 order-md-1">
+                <a class="btn btn-default" href="{% url 'list_task'%}">
+                    <button type="button" class="btn btn-outline-primary">Voltar</button>
+                </a>
+              </div>
+          </div>
+        </div>
+    </div>    
+{% endif %}
+{% endblock %}

@@ -1,0 +1,19 @@
+{% extends 'base.html' %}   
+{% block content %}
+    <br>
+    {% if user.is_authenticated %}
+        <h2>Editar Tarefa</h2>
+        <form method="POST" class="table" enctype="multipart/form-data">
+            {% csrf_token %}
+                <div class="form-group">
+                    {{ form.as_p }}
+                </div>
+                <a>
+                    <button type="submit" class="save btn btn-success">Concluir</button>
+                </a>
+                <a href="javascript:history.back()"> 
+                    <button type="button" class="btn btn-danger">Cancelar</button>
+                </a>
+        </form>
+    {% endif %}
+{% endblock %}

@@ -1,3 +1,4 @@
+{% extends 'base.html' %}  
 {% block content %}
     <br>
     <h2>Cadastro de Cliente</h2>
@@ -6,6 +7,9 @@
             <div class="form-group">
                 {{ form.as_p }}
              </div>
-            <button type="submit" class="save btn btn-default">Cadastrar</button>
+             <div class="d-flex justify-content-end">
+                <a class="btn btn-danger" href="javascript:history.back()">Cancelar</a>
+                <button type="submit" class="save btn btn-success">Cadastrar</button>
+            </div>
     </form>
 {% endblock %}
