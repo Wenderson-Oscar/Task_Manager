@@ -43,11 +43,13 @@ def logout_client(request):
 
 @login_required
 def confirm_delete_client(request):
+    """Processo para confirmar a deletação da conta"""
     client_del = get_object_or_404(User, pk=request.user.id)
     return render(request, 'client/del_client.html', {'del_client': client_del})
 
 @login_required
 def delete_client(request):
+    """Deleta a Conta"""
     client_del = get_object_or_404(User, pk=request.user.id)
     client_del.delete()
     return redirect('home')

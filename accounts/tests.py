@@ -2,6 +2,7 @@ from django.test import TestCase
 from accounts.models import Cliente
 from django.contrib.auth.models import User
 from .forms import ClienteForm
+from django.urls import reverse
 
 
 class ClientModelTestCase(TestCase):
@@ -68,3 +69,28 @@ class ClienteFormTestCase(TestCase):
         cliente = Cliente.objects.get(user=user)
         self.assertEqual(cliente.sexo, form_data['sexo'])
         self.assertEqual(cliente.nascimento.strftime('%Y-%m-%d'), form_data['nascimento'])
+
+
+class DelAccountViewsTestCase(TestCase):
+
+    def setUp(self) -> None:
+        
+        self.user = User.objects.create_user(
+            username='Teste@',
+            email='teste@gmail.com',
+            password='1@Weqasd9'
+            )
+
+    def confirmed_delete_account(self):
+        self.client.login(username=self.user.email, password=self.user.password)
+        url = reverse('confirm_delete_client')
+        response = self.client.get(url)
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, 'Tem certeza que deseja excluir a Conta ?')
+
+    def test_delete_account(self):
+        self.client.login(username=self.user.email, password=self.user.password)
+        url = reverse('delete_client')
+        response = self.client.post(url)
+        self.assertEqual(response.status_code, 302)
+        self.assertFalse(User.objects.filter(username=self.user.email).exists())
