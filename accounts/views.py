@@ -1,8 +1,6 @@
 from django.contrib.auth import login, logout, authenticate
-from django.shortcuts import render, redirect, get_list_or_404, get_object_or_404
-from .models import Cliente
+from django.shortcuts import render, redirect, get_object_or_404
 from .forms import ClienteForm
-from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 

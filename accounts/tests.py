@@ -82,6 +82,7 @@ class DelAccountViewsTestCase(TestCase):
             )
 
     def confirmed_delete_account(self):
+
         self.client.login(username=self.user.email, password=self.user.password)
         url = reverse('confirm_delete_client')
         response = self.client.get(url)
@@ -89,6 +90,7 @@ class DelAccountViewsTestCase(TestCase):
         self.assertContains(response, 'Tem certeza que deseja excluir a Conta ?')
 
     def test_delete_account(self):
+        
         self.client.login(username=self.user.email, password=self.user.password)
         url = reverse('delete_client')
         response = self.client.post(url)
