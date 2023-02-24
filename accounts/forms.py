@@ -4,6 +4,7 @@ from django.contrib.auth.models import User
 from .models import Cliente
 
 class ClienteForm(UserCreationForm):
+
     sexo = forms.ChoiceField(choices=Cliente.SEXO_CHOICES, widget=forms.Select(attrs={'class': 'form-control'}))
     nascimento = forms.DateField(widget=forms.DateInput(attrs={'type': 'date', 'format': 'dd/mm/yyyy'}))
     email = forms.EmailField(required=True, widget=forms.EmailInput(attrs={'class': 'form-control'}))

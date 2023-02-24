@@ -1,14 +1,16 @@
 from django.contrib.auth import login, logout, authenticate
-from django.shortcuts import render, redirect, get_list_or_404
+from django.shortcuts import render, redirect, get_list_or_404, get_object_or_404
 from .models import Cliente
 from .forms import ClienteForm
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.models import User
+from django.contrib.auth.decorators import login_required
 
 def home(request):
     return render(request, 'home.html')
 
 def register_client(request):
-    """Registra so Cliente no Sistema"""
+    """Registra o Cliente no Sistema"""
     if request.method == "POST":
         form = ClienteForm(request.POST)
         if form.is_valid():
@@ -36,3 +38,16 @@ def login_client(request):
 def logout_client(request):
     logout(request)
     return render(request, 'home.html')
+
+# // Deletar Conta //
+
+@login_required
+def confirm_delete_client(request):
+    client_del = get_object_or_404(User, pk=request.user.id)
+    return render(request, 'client/del_client.html', {'del_client': client_del})
+
+@login_required
+def delete_client(request):
+    client_del = get_object_or_404(User, pk=request.user.id)
+    client_del.delete()
+    return redirect('home')
