@@ -1,6 +1,6 @@
 asgiref==3.6.0
 backports.zoneinfo==0.2.1
-Django==4.1.6
+Django==4.1.7
 marshmallow==3.19.0
 packaging==23.0
 python-dotenv==0.21.1
