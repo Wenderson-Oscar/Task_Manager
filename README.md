@@ -126,7 +126,7 @@ Adicione a `SECRET_KEY` usando o seguinte formato:
 também colocaremos o DEBUG 
 
 ```
-DEBUG = false
+DEBUG = False
 SECRET_KEY = "sua_secret_key_aqui"
 ```
 colocamos false mais se preferir pode colocar true, fique a sua escolha.
