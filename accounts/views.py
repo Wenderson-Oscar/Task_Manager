@@ -4,6 +4,7 @@ from .forms import ClienteForm
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 
+
 def home(request):
     return render(request, 'home.html')
 
@@ -18,20 +19,23 @@ def register_client(request):
     else:
         form = ClienteForm()
     return render(request, 'client/register.html', {'form': form})
-        
+
 def authenticate_client(request):
     """Autenticar o Cliente"""
-    username = request.POST['username']
-    password = request.POST['password']
-    user = authenticate(username=username, password=password)
-    if user is not None:
-        login(request, user)
-        return redirect('list_task')
-    else:
-        return render(request, 'home.html')
+    if request.method == "POST":
+        username = request.POST['username']
+        password = request.POST['password']
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
+            login(request, user)
+            return redirect('list_task')
+        else:
+            return redirect('home')
+    return render(request, 'home.html')
 
 def login_client(request):
     return render(request, 'home.html')
+
 
 def logout_client(request):
     logout(request)

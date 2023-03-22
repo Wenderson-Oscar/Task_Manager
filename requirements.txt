@@ -1,7 +1,10 @@
 asgiref==3.6.0
-backports.zoneinfo==0.2.1
+dj-database-url==1.2.0
+dj-email-url==1.0.6
 Django==4.1.7
+django-cache-url==3.4.4
+environs==9.5.0
 marshmallow==3.19.0
 packaging==23.0
-python-dotenv==0.21.1
+python-dotenv==1.0.0
 sqlparse==0.4.3
